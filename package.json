@@ -1,6 +1,6 @@
 {
   "name": "of-proximity",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "version 0.1.0",
   "main": "proximity.less",
   "scripts": {
@@ -17,12 +17,14 @@
   },
   "homepage": "https://github.com/imagineux/proximity",
   "devDependencies": {
-    "gestalt-laws": "^0.1.x",
     "gulp": "^3.8.11",
     "gulp-less": "^2.0.1",
     "gulp-less-sourcemap": "^1.4.1",
     "gulp-recess": "^1.1.1",
     "normalize.css": "^3.0.2",
     "require-dir": "^0.1.0"
+  },
+  "dependencies": {
+    "gestalt-laws": "^0.1.x"
   }
 }
