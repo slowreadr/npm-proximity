@@ -9,26 +9,42 @@
 
 // Grid
 .make-row() {
-  // Negative margin the row out to align the content of columns
-  margin-left: -@grid-column-padding;
-  margin-right: -@grid-column-padding;
   // Then clear the floated columns
   .clearfix();
 }
-.make-column(@columns) {
+.make-column(@cols, @dir: normal) {
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  .process(@cols, @dir) when (escape(@dir) = left) {
+    // Set inner padding as gutters instead of margin
+    padding-left: 0;
+    padding-right: @grid-column-padding;
+  }
+  .process(@cols, @dir) when (escape(@dir) = right) {
+    // Set inner padding as gutters instead of margin
+    padding-left: @grid-column-padding;
+    padding-right: 0;
+  }
+  .process(@cols, @dir) when (escape(@dir) = full) {
+    // Set inner padding as gutters instead of margin
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .process(@cols, @dir) when (escape(@dir) = normal) {
+    // Set inner padding as gutters instead of margin
+    padding-left: @grid-column-padding;
+    padding-right: @grid-column-padding;
+  }
+  .process(@cols, @dir);
+  // Proper box-model (padding doesn't add to width)
+  .box-sizing(border-box);
   @media (min-width: @grid-float-breakpoint) {
     float: left;
     // Calculate width based on number of columns available
-    width: percentage(@columns / @grid-columns);
+    width: percentage(@cols / @grid-columns);
   }
-  // Prevent columns from collapsing when empty
-  min-height: 1px;
-  // Set inner padding as gutters instead of margin
-  padding-left: @grid-column-padding;
-  padding-right: @grid-column-padding;
-  // Proper box-model (padding doesn't add to width)
-  .box-sizing(border-box);
 }
+
 .make-column-offset(@columns) {
   @media (min-width: @grid-float-breakpoint) {
     margin-left: percentage(@columns / @grid-columns);
