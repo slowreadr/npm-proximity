@@ -7,11 +7,18 @@
 // responsive layouts
 // .responsive issh here
 
-
+* { min-height: 100vh; }
 .og-section {
-	.clearfix();
+	.make-row(rtl);
 
 	&_main {
-		.make-column(12, full);
+		.make-column(3, left);
+		min-height: 50vh;
+		border: 1px solid red;
+	}
+	&_aside {
+		.make-column(9, right);
+		min-height: 50vh;
+		border: 1px solid red;
 	}
 }

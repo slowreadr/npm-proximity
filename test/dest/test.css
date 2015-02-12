@@ -1,4 +1,6 @@
-@import "node_modules/normalize.css/normalize.css";
+* {
+  min-height: 100vh;
+}
 .og-section {
   *zoom: 1;
 }
@@ -11,17 +13,40 @@
 .og-section:after {
   clear: both;
 }
+@media (min-width: 768px) {
+  .og-section > * {
+    float: right !important;
+  }
+}
 .og-section_main {
   min-height: 1px;
   padding-left: 0;
-  padding-right: 0;
+  padding-right: 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  min-height: 50vh;
+  border: 1px solid red;
 }
 @media (min-width: 768px) {
   .og-section_main {
     float: left;
-    width: 100%;
+    width: 25%;
+  }
+}
+.og-section_aside {
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-height: 50vh;
+  border: 1px solid red;
+}
+@media (min-width: 768px) {
+  .og-section_aside {
+    float: left;
+    width: 75%;
   }
 }

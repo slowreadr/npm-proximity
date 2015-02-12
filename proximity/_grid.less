@@ -8,9 +8,16 @@
 @grid-float-breakpoint: 768px;
 
 // Grid
-.make-row() {
+.make-row(@dir: ltr) {
   // Then clear the floated columns
   .clearfix();
+  .process(@dir) when (escape(@dir) = rtl) {
+    @media (min-width: @grid-float-breakpoint) {
+      > * { float: right !important; }
+    } 
+  }
+  .process(@dir);
+  
 }
 .make-column(@cols, @dir: normal) {
   // Prevent columns from collapsing when empty
