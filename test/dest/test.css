@@ -2,7 +2,18 @@
   min-height: 100vh;
 }
 .og-section {
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 980px;
   *zoom: 1;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .og-section > * {
+    float: right !important;
+  }
 }
 .og-section:before,
 .og-section:after {
@@ -12,11 +23,6 @@
 }
 .og-section:after {
   clear: both;
-}
-@media (min-width: 768px) {
-  .og-section > * {
-    float: right !important;
-  }
 }
 .og-section_main {
   min-height: 1px;

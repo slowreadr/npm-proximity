@@ -8,17 +8,33 @@
 @grid-float-breakpoint: 768px;
 
 // Grid
-.make-row(@dir: ltr) {
-  // Then clear the floated columns
-  .clearfix();
-  .process(@dir) when (escape(@dir) = rtl) {
-    @media (min-width: @grid-float-breakpoint) {
-      > * { float: right !important; }
-    } 
-  }
-  .process(@dir);
-  
+.make-container( @direction: ltr, @gutters: @grid-column-padding, @max-width: @max-container-width ){
+
+	.process(@direction, @gutters, @max-width) when (escape(@direction) = rtl) {
+		@media (min-width: @grid-float-breakpoint) {
+			> * { float: right !important; }
+		}
+	}
+	.process(@direction, @gutters, @max-width);
+	padding-right: @gutters;
+	padding-left: @gutters;
+	max-width: @max-width;
+	.clearfix();
+	.center();
 }
+
+.make-row(@dir: ltr) {
+	// Then clear the floated columns
+	.process(@dir) when (escape(@dir) = rtl) {
+		@media (min-width: @grid-float-breakpoint) {
+			> * { float: right !important; }
+		}
+	}
+	.process(@dir);
+	.clearfix();
+}
+
+
 .make-column(@cols, @dir: normal) {
   // Prevent columns from collapsing when empty
   min-height: 1px;

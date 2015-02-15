@@ -6,11 +6,11 @@ create a grid engine that will allow for easy extension
 Todo:
 mixins ->
 	.make-container(
+		@direction: rtl,								-> reverse content direction
+		@align: center,									-> align object horizontal center
 		@gutters: @default,								-> padding lft & rt to config default
 		@max-width: @default,							-> max-width to config default
-		@align: center,									-> align object horizontal center
 		@bg-color: @green,								-> set objects background color
-		@direction: rtl,								-> reverse content direction
 	);
 
 	.style-object(

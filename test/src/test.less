@@ -9,7 +9,11 @@
 
 * { min-height: 100vh; }
 .og-section {
-	.make-row(rtl);
+	.make-container(
+		@direction: rtl,
+		@gutters: 15px,
+		@max-width: 980px
+	);
 
 	&_main {
 		.make-column(3, left);
@@ -22,3 +26,6 @@
 		border: 1px solid red;
 	}
 }
+
+
+
