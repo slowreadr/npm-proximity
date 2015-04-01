@@ -8,10 +8,10 @@
 @grid-float-breakpoint: 768px;
 
 // Grid
-.make-container( @direction: ltr, @gutters: @grid-column-padding, @max-width: @max-container-width ){
+.make-container( @direction: ltr, @gutters: @grid-column-padding, @max-width: @max-container-width, @breakpoint: @grid-float-breakpoint ){
 
 	.process(@direction, @gutters, @max-width) when (escape(@direction) = rtl) {
-		@media (min-width: @grid-float-breakpoint) {
+		@media (min-width: @breakpoint) {
 			> * { float: right !important; }
 		}
 		.ie8 & {
@@ -26,10 +26,10 @@
 	.center();
 }
 
-.make-row(@dir: ltr) {
+.make-row(@dir: ltr, @breakpoint: @grid-float-breakpoint) {
 	// Then clear the floated columns
 	.process(@dir) when (escape(@dir) = rtl) {
-		@media (min-width: @grid-float-breakpoint) {
+		@media (min-width: @breakpoint) {
 			> * { float: right !important; }
 		}
 		.ie8 & {
@@ -41,7 +41,7 @@
 }
 
 
-.make-column(@cols, @dir: normal) {
+.make-column(@cols, @dir: normal, @breakpoint: @grid-float-breakpoint ) {
   // Prevent columns from collapsing when empty
   min-height: 1px;
   .process(@cols, @dir) when (escape(@dir) = left) {
@@ -67,7 +67,7 @@
   .process(@cols, @dir);
   // Proper box-model (padding doesn't add to width)
   .box-sizing(border-box);
-  @media (min-width: @grid-float-breakpoint) {
+  @media (min-width: @breakpoint) {
     float: left;
     // Calculate width based on number of columns available
     width: percentage(@cols / @grid-columns);
@@ -79,8 +79,8 @@
 	}
 }
 
-.make-column-offset(@columns) {
-  @media (min-width: @grid-float-breakpoint) {
+.make-column-offset(@columns, @breakpoint: @grid-float-breakpoint ) {
+  @media (min-width: @breakpoint) {
     margin-left: percentage(@columns / @grid-columns);
   }
 	.ie8 & {

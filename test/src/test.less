@@ -11,24 +11,27 @@
 	.make-container(
 		@direction: rtl,
 		@gutters: 15px,
-		@max-width: 980px
+		@max-width: 980px,
+		@breakpoint: 0 
 	);
 
+
 	&_main {
-		.make-column(9, full);
+		.make-column(
+			@cols: 9,
+			@dir: normal,
+			@breakpoint: 0
+		);
 		min-height: 100vh;
 		border: 1px solid red;
 
-		&-vertical {
-			.make-row();
-			height: 20vh;
-			.center(column);
-			background: lightgray;
-		}
-
 	}
 	&_aside {
-		.make-column(3, full);
+		.make-column(
+			@cols: 3,
+			@dir: normal,
+			@breakpoint: 0
+		);
 		min-height: 100vh;
 		border: 1px solid red;
 	}
